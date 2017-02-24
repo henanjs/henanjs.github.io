@@ -1,13 +1,4 @@
 <style>
-  .post{
-     padding: 0 0 15px 
-  }
-  .content_container{
-      padding-top: 0;
-  }
-  .post .post-content{
-      padding-top: 0;
-  }
   .post .post-content img{
       margin: 0;
   }
@@ -39,6 +30,12 @@
     overflow:hidden;
     line-height:22px;
   }
+  #layout .layout-r{
+		display: none;
+	}
+	#layout .layout-l{
+		width: 100%;
+	}
   @media screen and (max-width: 950px) {
     #app .main{
       flex-basis: 100%;
@@ -52,6 +49,9 @@
       padding-right: 0; 
       margin-bottom: 0;
       margin-top: 0;
+    }
+    #app .main img{
+    	margin: auto;
     }
   }
   .article-entry ol li:before, .article-entry ul li:before
@@ -246,6 +246,8 @@
     }
     window.ajax = ajax;
   })(window);
+</script>
+<script>
 </script>
 <h1>英雄榜</h1><h5>感谢这些朋友给予的帮助</h5>
 <div id="app"></div>
