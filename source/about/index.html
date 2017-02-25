@@ -30,9 +30,6 @@
     overflow:hidden;
     line-height:22px;
   }
-  #layout .layout-r{
-		display: none;
-	}
 	#layout .layout-l{
 		width: 100%;
 	}
@@ -274,4 +271,10 @@
         document.getElementById('app').innerHTML = html;
       }
     })
+</script>
+<script>
+	setTimeout(function(){
+		var sidebar=document.getElementById("sidebar");
+		sidebar.parentNode.removeChild(sidebar);
+	},0)
 </script>
