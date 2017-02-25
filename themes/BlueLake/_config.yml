@@ -54,7 +54,7 @@ swiftype: ## Your swiftype_key, e.g. m7b11ZrsT8Me7gzApciT
 tinysou: ## Your tinysou_key, e.g. 4ac092ad8d749fdc6293
 
 #Cmments
-duoshuo: ## Your duoshuo_shortname, e.g. username
+duoshuo: henanjs ## Your duoshuo_shortname, e.g. username
 disqus: ## Your disqus_shortname, e.g. username
 
 # About page 
@@ -64,16 +64,14 @@ about:
   weibo_url: ## Your weibo's url e.g.  http://weibo.com/zhengchaooo
   weibo_name: ## Your weibo's name e.g.  秋过冬漫长
   github_url: https://github.com/henanjs
-  github_name: ## Your github'name e.g.  chaooo
+  github_name: henanjs ## Your github'name e.g.  chaooo
 
 # Friend link
 links:
-  - title: site-name1
-    url: http://www.example1.com/
-  - title: site-name2
-    url: http://www.example2.com/
-  - title: site-name3
-    url: http://www.example3.com/
+  - title: 联盟网站
+    url: http://www.jsfront.org
+  - title: 豪情
+    url: http://jikey.cnblogs.com
 
 
 # Miscellaneous
