@@ -9,7 +9,7 @@ menu:
   - page: archive
     directory: archives/
     icon: fa-archive
-  - page: about
+  - page: 英雄榜
     directory: about/
     icon: fa-user
   - page: rss
@@ -63,7 +63,7 @@ about:
   email: ## Your email e.g.  zhenggchaoo@gmail.com
   weibo_url: ## Your weibo's url e.g.  http://weibo.com/zhengchaooo
   weibo_name: ## Your weibo's name e.g.  秋过冬漫长
-  github_url: ## Your github'url e.g.  https://github.com/chaooo
+  github_url: https://github.com/henanjs
   github_name: ## Your github'name e.g.  chaooo
 
 # Friend link
