@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="河南前端交流群是河南地区浏览量最大的中文前端门户网站，是由河南前端从业人员发起，为河南数以万计的互联网用户提供富有创意的前端新生活。"><title> | 河南前端交流群 - 240344448</title><link rel="stylesheet" type="text/css" href="//fonts.css.network/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.2.0"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=1.2.0"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">河南前端交流群 - 240344448</h1><a id="logo" href="/.">河南前端交流群 - 240344448</a><p class="description">前端联盟河南地区唯一官方网站</p></div><div id="nav-menu"><a href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/" class="current"><i class="fa fa-user"> 英雄榜</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-content"><style>
+  .post .post-content img{
+      margin: 0;
+  }
+  #app{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app .main{
+      flex-basis: 25%;
+      margin-bottom: 30px;
+  }
+  #app .main h1{
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  #app .main img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  #app .main p{
+    font-size: 12px;
+    word-break:break-all;
+    white-space:pre-wrap;
+    padding-right: 50px; 
+    margin-bottom: 0;
+    margin-top: 0;
+    height:40px;
+    overflow:hidden;
+    line-height:22px;
+  }
+	#layout .layout-l{
+		width: 100%;
+	}
+  @media screen and (max-width: 950px) {
+    #app .main{
+      flex-basis: 100%;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    #app .main p{
+      font-size: 12px;
+      word-break:break-all;
+      white-space:pre-wrap;
+      padding-right: 0; 
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+    #app .main img{
+    	margin: auto;
+    }
+  }
+  .article-entry ol li:before, .article-entry ul li:before
+    display:none;
+  }
+</style>
+<script>
+  /* @ 作者：https://github.com/jojoin/tppl*/
+  var tppl = function(tpl, data){
+    var fn =  function(d) {
+        var i, k = [], v = [];
+        for (i in d) {
+            k.push(i);
+            v.push(d[i]);
+        };
+        return (new Function(k, fn.$)).apply(d, v);
+    };
+    if(!fn.$){
+        var tpls = tpl.split('[:');
+        fn.$ = "var $=''";
+        for(var t = 0;t < tpls.length;t++){
+            var p = tpls[t].split(':]');
+            if(t!=0){
+                fn.$ += '='==p[0].charAt(0)
+                  ? "+("+p[0].substr(1)+")"
+                  : ";"+p[0].replace(/\r\n/g, '')+"$=$"
+            }
+            // 支持 <pre> 和 [::] 包裹的 js 代码
+            fn.$ += "+'"+p[p.length-1].replace(/\'/g,"\\'").replace(/\r\n/g, '\\n').replace(/\n/g, '\\n').replace(/\r/g, '\\n')+"'";
+        }
+        fn.$ += ";return $;";
+        // log(fn.$);
+    }
+    return data ? fn(data) : fn;
+};
+/*@ 作者：https://github.com/littleBlack520/ajax*/
+(function(window,undefined) {
+    function ajax(options) {
+        //编码数据
+        function setData() {
+        	//设置对象的遍码
+            function setObjData(data, parentName) {
+                function encodeData(name, value, parentName) {
+                    var items = [];
+                    name = parentName === undefined ? name : parentName + "[" + name + "]";
+                    if (typeof value === "object" && value !== null) {
+                        items = items.concat(setObjData(value, name));
+                    } else {
+                        name = encodeURIComponent(name);
+                        value = encodeURIComponent(value);
+                        items.push(name + "=" + value);
+                    }
+                    return items;
+                }
+                var arr = [],value;
+                if (Object.prototype.toString.call(data) == '[object Array]') {
+                    for (var i = 0, len = data.length; i < len; i++) {
+                        value = data[i];
+                        arr = arr.concat(encodeData( typeof value == "object"?i:"", value, parentName));
+                    }
+                } else if (Object.prototype.toString.call(data) == '[object Object]') {
+                    for (var key in data) {
+                        value = data[key];
+                        arr = arr.concat(encodeData(key, value, parentName));
+                    }
+                }
+                return arr;
+            };
+            //设置字符串的遍码，字符串的格式为：a=1&b=2;
+            function setStrData(data) {
+                var arr = data.split("&");
+                for (var i = 0, len = arr.length; i < len; i++) {
+                    name = encodeURIComponent(arr[i].split("=")[0]);
+                    value = encodeURIComponent(arr[i].split("=")[1]);
+                    arr[i] = name + "=" + value;
+                }
+                return arr;
+            }
+            if (data) {
+                if (typeof data === "string") {
+                    data = setStrData(data);
+                } else if (typeof data === "object") {
+                    data = setObjData(data);
+                }
+                data = data.join("&").replace("/%20/g", "+");
+                //若是使用get方法或JSONP，则手动添加到URL中
+                if (type === "get" || dataType === "jsonp") {
+                    url += url.indexOf("?") > -1 ? (url.indexOf("=") > -1 ? "&" + data : data) : "?" + data;
+                }
+            }
+        }
+        // JSONP
+        function createJsonp() {
+            var script = document.createElement("script"),
+                timeName = new Date().getTime() + Math.round(Math.random() * 1000),
+                callback = "JSONP_" + timeName;
+            window[callback] = function(data) {
+                clearTimeout(timeout_flag);
+                document.body.removeChild(script);
+                success(data);
+            }
+            script.src = url + (url.indexOf("?") > -1 ? "&" : "?") + "callback=" + callback;
+            script.type = "text/javascript";
+            document.body.appendChild(script);
+            setTime(callback, script);
+        }
+        //设置请求超时
+        function setTime(callback, script) {
+            if (timeOut !== undefined) {
+                timeout_flag = setTimeout(function() {
+                    if (dataType === "jsonp") {
+                        delete window[callback];
+                        document.body.removeChild(script);
+                    } else {
+                        timeout_bool = true;
+                        xhr && xhr.abort();
+                    }
+                    console.log("timeout");
+                }, timeOut);
+            }
+        }
+        // XHR
+        function createXHR() {
+            //由于IE6的XMLHttpRequest对象是通过MSXML库中的一个ActiveX对象实现的。
+            //所以创建XHR对象，需要在这里做兼容处理。
+            function getXHR() {
+                if (window.XMLHttpRequest) {
+                    return new XMLHttpRequest();
+                } else {
+                    //遍历IE中不同版本的ActiveX对象
+                    var versions = ["Microsoft", "msxm3", "msxml2", "msxml1"];
+                    for (var i = 0; i < versions.length; i++) {
+                        try {
+                            var version = versions[i] + ".XMLHTTP";
+                            return new ActiveXObject(version);
+                        } catch (e) {}
+                    }
+                }
+            }
+            //创建对象。
+            xhr = getXHR();
+            xhr.open(type, url, async);
+            //设置请求头
+            if (type === "post" && !contentType) {
+                //若是post提交，则设置content-Type 为application/x-www-four-urlencoded
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+            } else if (contentType) {
+                xhr.setRequestHeader("Content-Type", contentType);
+            }
+            //添加监听
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (timeOut !== undefined) {
+                        //由于执行abort()方法后，有可能触发onreadystatechange事件，
+                        //所以设置一个timeout_bool标识，来忽略中止触发的事件。
+                        if (timeout_bool) {
+                            return;
+                        }
+                        clearTimeout(timeout_flag);
+                    }
+                    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                        success(xhr.responseText);
+                    } else {
+                        error(xhr.status, xhr.statusText);
+                    }
+                }
+            };
+            //发送请求
+            xhr.send(type === "get" ? null : data);
+            setTime(); //请求超时
+        }
+        var url = options.url || "", //请求的链接
+            type = (options.type || "get").toLowerCase(), //请求的方法,默认为get
+            data = options.data || null, //请求的数据
+            contentType = options.contentType || "", //请求头
+            dataType = options.dataType || "", //请求的类型
+            async = options.async === undefined ? true : options.async, //是否异步，默认为true.
+            timeOut = options.timeOut, //超时时间。 
+            before = options.before || function() {}, //发送之前执行的函数
+            error = options.error || function() {}, //错误执行的函数
+            success = options.success || function() {}; //请求成功的回调函数
+        var timeout_bool = false, //是否请求超时
+            timeout_flag = null, //超时标识
+            xhr = null; //xhr对角
+        setData();
+        before();
+        if (dataType === "jsonp") {
+            createJsonp();
+        } else {
+            createXHR();
+        }
+    }
+    window.ajax = ajax;
+  })(window);
+</script>
+<script>
+</script>
+<h1>英雄榜</h1><h5>感谢这些朋友给予的帮助</h5>
+<div id="app"></div>
+<script id="template" type="text/html">
+  [: for (var i=0;i<modules.length;i++) { :]
+  <div class="main">
+      <img src="[:=modules[i].avatar:]" alt="">
+      <h1>[:=modules[i].name:]</h1>
+      <p><a target="_blank" href="[:=modules[i].blog:]">博客</a>,<a target="_blank" href="[:=modules[i].website:]">网站</a></p>
+      <p>[:=modules[i].word:]</p>
+  </div>
+  [:}:]
+</script>
+<script>
+    ajax({
+      url:'/about/data.json',
+      type:'GET',
+      data:'JSON',
+      success:function(json){
+        var data = {
+          modules : JSON.parse(json)
+        }
+        var html = tppl(document.getElementById('template').innerHTML, data);
+        document.getElementById('app').innerHTML = html;
+      }
+    })
+</script>
+<script>
+	setTimeout(function(){
+		var sidebar=document.getElementById("sidebar");
+		sidebar.parentNode.removeChild(sidebar);
+	},0)
+</script></div><div data-thread-key="about/index.html" data-title="" data-url="http://yoursite.com/about/index.html" data-author-key="1" class="ds-thread"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="widget"><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="请输入关键字..."/></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/开源消息/">开源消息</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-fei"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/几个让我印象深刻的面试题-一/">几个让我印象深刻的面试题(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/welcome-2017/">2017-我们来了</a></li></ul></div><div class="widget"><div class="comments-title"><i class="fa fa-commt"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div></div></div></div><a id="totop" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.2.0" async></script><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |<a href="/atom.xml">订阅本站</a> |<span>联系博主：<a href="mailto:null" target="_blank" class="fa fa-email"> </a><a href="null" target="_blank" class="fa fa-weibo"></a><a href="https://github.com/henanjs" target="_blank" class="fa fa-github"> </a></span></p><p><span> Copyright &copy;<a href="/." rel="nofollow">豪情</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span><span><a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> Theme </a>by<a rel="nofollow" target="_blank" href="https://github.com/chaooo"> Charles.</a></span></p></div></div></div><script>var duoshuoQuery = {short_name:'henanjs'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    document.getElementsByTagName('body')[0].appendChild(ds);
+})();
+</script><script type="text/javascript" src="/js/search.json.js?v=1.2.0"></script></body></html>
