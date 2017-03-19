@@ -10,6 +10,7 @@ tags: [面试,基础,javascript]
 [知乎](https://zhuanlan.zhihu.com/p/25863288)&&[知乎专栏](https://zhuanlan.zhihu.com/jayzangwill)
 [简书](http://link.zhihu.com/?target=http%3A//www.jianshu.com/p/65319f42a5ce)
 [河南前端交流群官网](http://henanjs.org/)
+作者：[JayZangwill](https://github.com/JayZangwill)
 
 上次写了一篇[几个让我印象深刻的面试题(一)](https://jayzangwill.github.io/blog/2017/03/01/Some%20of%20the%20interview%20questions%20that%20impressed%20me-1/)没看过的同学可以去看哦。
 这次文章的题目来源：[这里有超过20家的前端面试题，你确定不点进来看看？](https://juejin.im/post/58c51b5c44d90400698da686)。
