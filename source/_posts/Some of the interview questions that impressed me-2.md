@@ -25,17 +25,17 @@ tags: [面试,基础,javascript]
 1. 请问a，b，c分别输出什么？
 
 ```javascript
-  function fun(n,o){
-            console.log(o)
-            return{
-                fun:function(m){
-                    return fun(m,n);
-                }
-            };
-    }
-    var a = fun(0); a.fun(1); a.fun(2); a.fun(3);
-    var b = fun(0).fun(1).fun(2).fun(3);
-    var c = fun(0).fun(1); c.fun(2); c.fun(3);
+function fun(n,o){
+    console.log(o)
+    return{
+      fun:function(m){
+         return fun(m,n);
+      }
+    };
+}
+var a = fun(0); a.fun(1); a.fun(2); a.fun(3);
+var b = fun(0).fun(1).fun(2).fun(3);
+var c = fun(0).fun(1); c.fun(2); c.fun(3);
 ```
 
 2. 用尽可能多的方法找出数组中重复出现过的元素
@@ -47,59 +47,58 @@ tags: [面试,基础,javascript]
 3. 给定一些文档（docs）、词（words），找出词在文档中全部存在的所有文档
 
 ```javascript
-  var docs = [
-            {
-                id: 1,
-                words: ['hello',"world"]
-            },
-            {
-                id: 2,
-                words: ['hello',"kids"]
-            },
-            {
-                id: 3,
-                words: ['zzzz',"hello"]
-            },
-            {
-                id: 4,
-                words: ['world',"kids"]
-            }
-    ];
-    findDocList(docs,['hello']) //文档1，文档2，文档3
-    findDocList(docs,['hello','world']) //文档1
+var docs = [{
+        id: 1,
+        words: ['hello',"world"]
+    },
+    {
+        id: 2,
+        words: ['hello',"kids"]
+    },
+    {
+        id: 3,
+        words: ['zzzz',"hello"]
+    },
+    {
+        id: 4,
+        words: ['world',"kids"]
+    }
+ ];
+findDocList(docs,['hello']) //文档1，文档2，文档3
+findDocList(docs,['hello','world']) //文档1
 ```
 
 4. 下面代码会输出什么？
 
 ```javascript
-	var test = (function(a){
-            this.a = a;
-            return function(b){
-                return this.a + b;
-            }
+var test = (function(a){
+    this.a = a;
+    return function(b){
+        return this.a + b;
+    }
     }(function(a,b){
-            return a;
+        return a;
     }(1,2)));
-    console.log(test(1));
+console.log(test(1));
 ```
 
 5. 不用循环，创建一个长度为 100 的数组，并且每个元素的值等于它的下标。
 6. 一个整数，它的各位数字如果是左右对称的，则这个数字是对称数。那么请找出 1 至 10000 中所有的对称数
 7. 以下代码输出结果是什么？
 ```javascript
- 	var myObject = {
-            foo: "bar",
-            func: function(){
-                var self = this;
-                console.log('outer func : this.foo' + this.foo);
-                console.log('outer func : self.foo' + self.foo);
-                (function(){
-                    console.log('inner func : this.foo' + this.foo);
-                    console.log('inner func : self.foo' + self.foo);
-                })();
-            }
-    };
-    myObject.func();
+var myObject = {
+    foo: "bar",
+    func: function(){
+         var self = this;
+         console.log('outer func : this.foo' + this.foo);
+         console.log('outer func : self.foo' + self.foo);
+         (function(){
+             console.log('inner func : this.foo' + this.foo);
+             console.log('inner func : self.foo' + self.foo);
+         })();
+    }
+};
+myObject.func();
 ```
 8. 请写出以下正则表达式的详细规则说明
 /^(0[1-9]\d\d?)?[1-9]\d{6}\d?$/
@@ -109,25 +108,25 @@ tags: [面试,基础,javascript]
 10. 写出element.getElementsByClassName 的实现方法
 11. 请写出代码输出结果
 ```javascript
-  if(!("a" in window)){
-      var a = 1;
-  }
-  alert(a);
+if(!("a" in window)){
+    var a = 1;
+}
+alert(a);
 ```
 12. 请写出代码输出结果
-```javscript
- var handle = function(a){
-            var b = 3;
-            var tmp = function(a){
-                b = a + b;
-                return tmp;
-            }
-            tmp.toString = function(){
-                return b;
-            }
-            return tmp;
+```javascript
+var handle = function(a){
+    var b = 3;
+    var tmp = function(a){
+        b = a + b;
+        return tmp;
     }
-    alert(handle(4)(5)(6));
+    tmp.toString = function(){
+        return b;
+    }
+    return tmp;
+}
+alert(handle(4)(5)(6));
 ```
 
 13. javscript表达式"[]==''"的值是什么，为什么？
@@ -147,16 +146,16 @@ tags: [面试,基础,javascript]
 
 ```javascript
 function fun(n,o){
-          console.log(o)
-          return{
-              fun:function(m){
-                  return fun(m,n);
-              }
-          };
-  }
-  var a = fun(0); a.fun(1); a.fun(2); a.fun(3);
-  var b = fun(0).fun(1).fun(2).fun(3);
-  var c = fun(0).fun(1); c.fun(2); c.fun(3);
+   console.log(o)
+   return{
+       fun:function(m){
+           return fun(m,n);
+       }
+   };
+}
+var a = fun(0); a.fun(1); a.fun(2); a.fun(3);
+var b = fun(0).fun(1).fun(2).fun(3);
+var c = fun(0).fun(1); c.fun(2); c.fun(3);
 ```
 
 我们先来一步一步地看。首先是`a=fun(0)`因为只传了一个参数，`console`输出的是第二个参数的值，所以毫无疑问地输出`undefined`。
@@ -186,13 +185,13 @@ function fun(n,o){
 这是我的代码：
 ```javascript
 function repeat(arr){
-	var result=[];
-	arr.sort().sort(function(a,b){
-		if(a===b&&result.indexOf(a)===-1){
-			result.push(a);
-		}
-	});
-		return result;
+    var result=[];
+    arr.sort().sort(function(a,b){
+        if(a===b&&result.indexOf(a)===-1){
+            result.push(a);
+        }
+    });
+    return result;
 }
 ```
 
@@ -204,20 +203,20 @@ function repeat(arr){
 
 这是我的代码：
 ```javascript
-			function findDocList(docs,arr){
-				let arrStr=arr.join(""),
-				itemStr,
-				result=[];
-				docs.forEach(function(item){
-					itemStr=item.words.join("");
-					if(itemStr.search(new RegExp(arrStr))!==-1){
-							result.push("文档"+item.id);
-					}
-				});
-				console.log(result);
-			}
-			findDocList(docs, ['hello']) //文档1，文档2，文档3
-			findDocList(docs, ['hello', 'world']) //文档1
+function findDocList(docs, arr) {
+    let arrStr = arr.join(""),
+    itemStr,
+    result = [];
+    docs.forEach(function(item) {
+        itemStr = item.words.join("");
+        if(itemStr.search(new RegExp(arrStr)) !== -1) {
+        result.push("文档" + item.id);
+    }
+    });
+    console.log(result);
+}
+findDocList(docs, ['hello']) //文档1，文档2，文档3
+findDocList(docs, ['hello', 'world']) //文档1
 ```
 
 ### 第四题
@@ -225,14 +224,14 @@ function repeat(arr){
 下面代码会输出什么？
 ```javascript
 var test = (function(a){
-           this.a = a;
-           return function(b){
-               return this.a + b;
-           }
-   }(function(a,b){
-           return a;
-   }(1,2)));
-   console.log(test(1));
+		this.a = a;
+		return function(b){
+		return this.a + b;
+		}
+}(function(a,b){
+		return a;
+}(1,2)));
+console.log(test(1));
 ```
 
 可以看到，这里有两个自执行函数。下面这个自执行函数执行完后向上面这个自执行函数传了个1所以`this.a=1`，这里的`this`指向`window`。然后这个自执行函数返回个函数给`test`变量。下面调用`test(1)`，这个1传进来后相当于`return 1+1`所以就输出2。
@@ -261,20 +260,20 @@ Object.keys(Array.from({length:100}))
 我的思路，先将数字转为字符串，然后利用数组的`map`方法遍历这个字符串，将字符串全部分开变为数组，然后调用数组的`reverse`方法，再将翻转后的数组`join`成字符串，最后对比翻转后的字符串和翻转前的字符串是否相等即可（方法有点愚笨，望大神指教）：
 ```javascript
 function symmetric(){
-	var i=1,
-	str,
-	newStr,
-	result=[];
-	for(;i<1000;i++){
-		str=""+i;
-		newStr=result.map.call(str,function(item){
-			return item;
-		}).reverse().join("");
-		if(str===newStr){
-			result.push(+str);
-		}
-	}
-	return result;
+    var i=1,
+    str,
+    newStr,
+    result=[];
+    for(;i<1000;i++){
+        str=""+i;
+        newStr=result.map.call(str,function(item){
+            return item;
+        }).reverse().join("");
+        if(str===newStr){
+            result.push(+str);
+        }
+    }
+    return result;
 }
 ```
 
@@ -282,19 +281,19 @@ function symmetric(){
 
 以下代码输出什么？
 ```javascript
- 	var myObject = {
-            foo: "bar",
-            func: function(){
-                var self = this;
-                console.log('outer func : this.foo' + this.foo);
-                console.log('outer func : self.foo' + self.foo);
-                (function(){
-                    console.log('inner func : this.foo' + this.foo);
-                    console.log('inner func : self.foo' + self.foo);
-                })();
-            }
-    };
-    myObject.func();
+var myObject = {
+    foo: "bar",
+    func: function(){
+    var self = this;
+    console.log('outer func : this.foo' + this.foo);
+    console.log('outer func : self.foo' + self.foo);
+    (function(){
+        console.log('inner func : this.foo' + this.foo);
+        console.log('inner func : self.foo' + self.foo);
+    })();
+    }
+};
+myObject.func();
 ```
 
 这题主要考察`this`指向，个人觉得难度不是太大，因为`this`已经被我完全承包啦(坏笑脸)。
@@ -366,22 +365,22 @@ arr.sort(randomsort);
 我的思路：先获取页面下的所有元素，然后用`split`将传进来的多个`class`分割成数组，然后利两层循环找出符合条件的元素（个人觉得这种方法效率实在低下，就当是抛砖引玉吧，欢迎留言）
 代码：
 ```javascript
-			if(!document.getElementsByClassName) {
-				document.getElementsByClassName = function(className) {
-					var ele = [],
-					tags = document.getElementsByTagName("*");
-					className = className.split(/\s+/);
-					for(var i = 0; i < tags.length; i++) {
-						for(var j = 0; j < className.length; j++) {
-						//如果这个元素上有这个class且没在ele里面(主要防止多个class加在一个元素上推进去两次的情况)
-							if(tags[i].className === className[j] && ele.indexOf(tags[i]) === -1) {
-								ele.push(tags[i]);
-							}
-						}
-					}
-					return ele;
-				}
-			}
+if(!document.getElementsByClassName) {
+    document.getElementsByClassName = function(className) {
+    var ele = [],
+        tags = document.getElementsByTagName("*");
+    className = className.split(/\s+/);
+    for(var i = 0; i < tags.length; i++) {
+        for(var j = 0; j < className.length; j++) {
+        //如果这个元素上有这个class且没在ele里面(主要防止多个class加在一个元素上推进去两次的情况)
+            if(tags[i].className === className[j] && ele.indexOf(tags[i]) === -1) {
+                ele.push(tags[i]);
+            }
+        }
+    }
+    return ele;
+    }
+}
 ```
 ### 第十一题
 请写出代码输出结果
@@ -393,7 +392,7 @@ arr.sort(randomsort);
 ```
 
 这题主要考察了变量的声明提升，任何变量(es5中)的声明都会提升到当前作用域的顶端。所以这里的代码其实为：
-```javscript
+```javascript
   var a;
   if(!("a" in window)){
       a = 1;
@@ -404,19 +403,19 @@ arr.sort(randomsort);
 
 ### 第十二题
 请写出代码输出结果
-```javscript
- var handle = function(a){
-            var b = 3;
-            var tmp = function(a){
-                b = a + b;
-                return tmp;
-            }
-            tmp.toString = function(){
-                return b;
-            }
-            return tmp;
+```javascript
+var handle = function(a){
+    var b = 3;
+    var tmp = function(a){
+        b = a + b;
+        return tmp;
     }
-    alert(handle(4)(5)(6));
+    tmp.toString = function(){
+        return b;
+    }
+    return tmp;
+}
+alert(handle(4)(5)(6));
 ```
 
 我们来一步一步看：首先是`handle(4)`，到这里，程序开始运行，创建了一个`tmp`函数，同时把`tmp`函数的`toString`方法重写了，最后返回这个`tmp`函数。
@@ -436,25 +435,25 @@ Js生成下面html，点击每个li的时候弹出1,2,3......
 //li onclick事件都能弹出当前被点击的index=?
 ```html
 <ul id="testUrl">
-	<li>index=0</li>
-	<li>index=1</li>
+    <li>index=0</li>
+    <li>index=1</li>
 </ul>
 ```
 
 这题直接按照要求生成对应的html，再给`ul`绑定个事件，利用事件代理监听是谁被点了，然后输出它们的序号和对应的内容，没啥难度。我的代码：
 ```javascript
 var ul=document.createElement("ul"),
-lis=[];
-ul.id="testUrl";
+    lis=[];
+    ul.id="testUrl";
 for(var i=0,li;i<2;i++){
-	li=document.createElement("li");
-	li.innerHTML="index="+i;
-	ul.appendChild(li);
-	lis.push(li);
+    li=document.createElement("li");
+    li.innerHTML="index="+i;
+    ul.appendChild(li);
+    lis.push(li);
 }
 ul.addEventListener("click",function(e){
-	alert(lis.indexOf(e.target));
-	alert(e.target.innerHTML)
+    alert(lis.indexOf(e.target));
+    alert(e.target.innerHTML)
 });
 document.body.appendChild(ul);
 ```
@@ -464,19 +463,19 @@ map方法是ES5中新增的，要求为ES5以下的环境增加个map方法
 个人认为只要对[map](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map#Compatibility)方法够了解，自然就能封装出来了。嘿嘿，不喜勿喷。给的链接虽然也有一个实现`map`的方法，但是用到了es5的`for in`不符合题目，所以我的代码：
 ```javascript
 if(!Array.prototype.map){
-	Array.prototype.map=function(callback,context){
-		var len=this.length,
-		i=0,
-		result=[];
-		if (typeof callback !== "function") {
-      		throw new TypeError(callback + " is not a function");
-    	}
-		context=context||window;
-		for(;i<len;i++){
-			this[i]!==undefined?result.push(callback.call(context,this[i],i,this)):result.push(this[i]);
-		}
-		return result;
-	}
+    Array.prototype.map=function(callback,context){
+    var len=this.length,
+        i=0,
+        result=[];
+    if (typeof callback !== "function") {
+        throw new TypeError(callback + " is not a function");
+    }
+    context=context||window;
+    for(;i<len;i++){
+        this[i]!==undefined?result.push(callback.call(context,this[i],i,this)):result.push(this[i]);
+    }
+    return result;
+    }
 }
 ```
 不过我的代码和标准的输出结果还是有点出入的。就是我不处理`undefined`和`null`，因为`this[i]!==undefined`，这两个值是会原样返回的。不过日常的一些需求还是能满足的。欢迎大家提建议哈。
